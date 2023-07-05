@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body style="background-color: aqua;">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      
+    <div class="text-center"><h1 class="text-danger">Welcome to Quiz System</h1></div>
+     <div class="container mt-3">
+        <form method="post">
+            {% csrf_token %}
+            {%  for question in questions %}
+                <label for="question_name" class="bg-success text-warning h5"> Q. {{ question.question_name }} &nbsp;&nbsp;</label><br>
+                <input type="radio" name="{{ question.question_name }} " id="" class="ml-1" value="{{ question.option1 }}">   {{ question.option1 }}"<br><br>
+                <input type="radio" name="{{ question.question_name }} " id="" value="{{ question.option2 }}">   {{ question.option2 }}<br><br>
+                <input type="radio" name="{{ question.question_name }} " id="" value="{{ question.option3 }}">   {{ question.option3 }}<br><br>
+                <input type="radio" name="{{ question.question_name }} " id="" value="{{ question.option4 }}">   {{ question.option4 }}<br><br>
+               
+                {% endfor %}
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="submit" value="sumbit question" class="btn btn-success center mb-5">
+
+        </form>
+    </div>
+  
+</body>
+</html>
